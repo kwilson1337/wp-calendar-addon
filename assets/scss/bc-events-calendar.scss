@@ -1,0 +1,106 @@
+.bc-events-calendar {        
+    max-width: 1140px; 
+    margin: auto;
+    border-left: 1px solid $gray;
+    border-bottom: 1px solid $gray;
+
+    &__head {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border: 1px solid $gray;
+        border-left: none;
+        text-align: center;    
+        padding: rem(8px) rem(15px);
+    }
+    
+    &__days-names,
+    &__days {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));       
+    }   
+
+    &__days-names {        
+        text-align: center;
+
+        @include mq('sm') {
+            display: none;
+        }
+        
+        > div {
+            border-right: 1px solid $gray;
+            padding: rem(8px) 0px;
+        }
+    }
+
+    &__days {
+        @include mq('sm') {
+            display: block;
+        }
+    }
+
+    &__single-event {
+        padding: rem(15px);
+        border-top: 1px solid $gray;
+        border-right: 1px solid $gray;
+        overflow: hidden;
+        min-height: 150px;
+
+        @include mq('sm') {
+            min-height: auto;
+        }
+
+
+        .mobile-date {
+            display: none;
+
+            @include mq('sm') {
+                display: inline-block;
+                margin-right: rem(5px);
+            }
+        }
+
+        ul {            
+            margin: 0px;      
+            padding-left: rem(15px);
+
+            li {
+                &::marker {
+                    color: $color1;
+                }
+
+                & + li {
+                    margin-top: rem(5px);
+                }
+            }
+        }
+
+        // past - future dates
+        &.eventless-pre,
+        &.eventless-post,
+        &.eventful-post,
+        &.eventful-pre {
+            background-color: lighten($gray, 15%);
+        }
+
+        &.eventless,
+        &.eventless-pre,
+        &.eventless-post,
+        &.eventless-today,
+        &.eventful-post,
+        &.eventful-pre {
+            @include mq('sm') {
+                display: none;
+            }
+        }
+    }
+
+    &__no-events-mobile {
+        display: none;
+
+        @include mq('sm') {
+            display: block;
+            text-align: center;
+            margin-top: rem(20px);
+        }
+    }
+}

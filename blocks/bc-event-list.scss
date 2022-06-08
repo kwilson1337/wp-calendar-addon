@@ -1,0 +1,368 @@
+.bc-plugin-event-list {
+
+    &__options {
+        margin-bottom: rem(40px);
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        &.-between {
+            justify-content: space-between;
+        }
+
+        .options-right {
+            max-width: rem(350px);
+            width: 100%;
+            margin-right: rem(10px);
+
+            @include mq('xs') {
+                max-width: rem(250px);
+            }
+        }
+
+        .options-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .bc-layout-button {
+            background-color: transparent;
+            color: $color1;
+            border: 1px solid $color1;
+            border-radius: rem(4px);
+            font-size: rem(20px);
+
+            & + .bc-layout-button {
+                margin-left: rem(10px);
+            }
+        }
+    }
+
+    &__output {
+        /** Grid layout **/
+        &.-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: rem(20px);
+
+            .em-pagination {
+                grid-column: span 4;     
+                margin-top: 0px;           
+            }
+
+            &.-three {
+                grid-template-columns: repeat(3, 1fr);
+
+                .em-pagination {
+                    grid-column: span 3;
+                }
+            }
+
+            @include mq('md') {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            @include mq('sm') {
+                grid-template-columns: repeat(2, 1fr);
+
+                .em-pagination {
+                    grid-column: span 2;
+                }
+
+                &.-three {
+                    grid-template-columns: repeat(2, 1fr);
+
+                    .em-pagination {
+                        grid-column: span 2;
+                    }
+                }
+            }
+
+            @include mq('xs') {
+                grid-template-columns: 1fr;
+
+                .em-pagination {
+                    grid-column: span 1;
+                }
+
+                &.-three {
+                    grid-template-columns: 1fr;
+
+                    .em-pagination {
+                        grid-column: span 1;
+                    }
+                }
+            }
+        }
+
+        .em-pagination {           
+            display: flex;
+            align-items: center;
+            margin-top: rem(20px);
+
+            > * {
+                width: rem(40px);
+                height: rem(40px);
+                border-radius: rem(5px);
+                background-color: $white;
+                display: inline-block;  
+                box-shadow: 0 3px 5px 0 rgba(0,0,0,.2);
+                border: 1px solid rgba(0,0,0,.2);      
+                display: flex;            
+                align-items: center;
+                justify-content: center;    
+                transition: .3s ease-in-out all;
+                
+                & + * {
+                    margin-left: rem(10px);
+                }
+
+                &:hover {
+                    text-decoration: none;
+                    box-shadow: none;
+                    transform: translateY(2px);                   
+                }
+            }
+
+            strong {
+                background-color: $color1;
+                border: 1px solid $color1;
+                color: $white;
+            }  
+            
+            a {
+                &.next,
+                &.prev {
+                    color: transparent;
+                    &::after {
+                        content: "\f054";
+                        font-family: "Font Awesome 5 Pro";
+                        color: $color1;   
+                        margin-left: rem(-7px);                 
+                    }
+                }  
+                
+                &.prev {
+                    &::after {
+                        content: "\f053";
+                        margin-left: rem(-10px);
+                    }
+                }
+            }
+        }
+    }
+
+    @keyframes popIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    &__single {
+        padding: rem(20px);
+        border: 1px solid #ccc;
+        border-radius: rem(4px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: .3s ease-in-out all;
+        margin-bottom: rem(20px);   
+        
+        &:last-of-type {
+            margin-bottom: 0px;
+        }
+
+        @include mq('xs') {
+            display: block;
+            padding: 0px;
+        }
+
+        &.-is-loaded {
+            opacity: 0;
+            animation-name: popIn;
+            animation-delay: .2s;
+            animation-duration: .5s;
+            animation-fill-mode: forwards;
+        }
+
+        //** Hide title overlay unless on grid layout **//
+        .title-overlay {
+            display: none;
+        } 
+
+        /** Grid layout **/
+        .-grid & {
+            display: block;
+            padding: 0px;
+            display: flex;
+            flex-direction: column;
+            margin: 0px;
+
+            & + .bc-plugin-event-list__single {
+                margin-top: rem(0px);
+            }  
+            
+            /** title overlay **/
+            &.-title-overlay  {
+                .image-container {
+                    padding: rem(15px);
+
+                    @include mq('xs') {
+                        display: flex;
+                    }
+                }
+
+                .title-overlay {
+                    display: block;
+                    text-align: center;
+                    position: relative;
+
+                    > *  {
+                        margin: 0px;
+                    }
+                }
+
+                .event-info {
+                    .event-title {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        &.-empty {
+            border: none;
+            justify-content: center;            
+        }               
+    }
+
+    &__left {    
+        display: flex;
+        align-items: center;            
+        margin-right: rem(20px);    
+        width: 100%;
+
+        .event-title {
+            margin: 0px;
+        }
+                    
+        .event-meta-data {
+            p {
+                margin: rem(20px) 0px rem(10px);     
+                text-transform: uppercase;           
+            }
+
+            a,
+            p {
+                display: flex;                
+            }
+
+            i {
+                margin-right: rem(8px);
+                position: relative;
+                top: rem(3px);
+            }
+        }
+                   
+        .image-container {
+            max-width: rem(125px);
+            width: 100%;
+            height: rem(125px);
+            overflow: hidden;
+            margin-right: rem(20px);  
+            position: relative;  
+            display: flex;        
+            align-items: center;
+            justify-content: center;     
+            
+            img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                height: 100%;
+                object-fit: cover;                
+            }
+        }  
+        
+        @include mq('xs') {
+            display: block;
+            padding: 0px;
+
+            .image-container {
+                position: relative;
+                overflow: hidden;
+                height: rem(120px);
+                max-width: 100%;
+                margin: 0px;                
+            }
+
+            .event-info {
+                padding: rem(20px);
+            }
+        }
+        
+        /** Grid layout **/
+        .-grid & {
+            margin: 0px;
+            display: block;
+            
+            .image-container {
+                max-width: 100%;
+                margin: 0px;
+                position: relative;
+                overflow: hidden;
+                height: rem(120px);
+                border-top-left-radius: rem(4px);
+                border-top-right-radius: rem(4px);
+
+                @include mq('xs') {
+                    display: block;                    
+                }
+
+                img {
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    object-fit: cover;
+                }                
+            }
+                    
+            .event-info {
+                padding: rem(20px);
+            }                        
+        }       
+    }
+
+    &__event-link {
+        @include mq('xs') {
+            width: 100%;
+            padding: rem(20px);            
+
+            a {
+                display: block;
+            }
+        }
+
+        /** Grid layout **/
+        .-grid & {          
+            padding: rem(20px);    
+            width: 100%;   
+            
+            @include mq('xs') {
+                margin: 0px;
+            }
+
+            a {
+                display: block;
+            }            
+        }
+    }
+}

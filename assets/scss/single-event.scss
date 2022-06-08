@@ -1,0 +1,398 @@
+//** Banner **//
+.bc-banner.bc-plugin-single-event {
+
+    .bc-banner__date,
+    .bc-banner__location,
+    .bc-banner__ticket-start {
+        text-align: center;
+        margin-top: rem(20px);        
+
+        p,
+        a {
+            margin: 0px;
+            color: $white;
+            display: flex;
+            align-items: center;   
+            justify-content: center;         
+        }
+
+        i {
+            margin-right: rem(10px);
+        }
+    }
+
+    .bc-banner__location {
+        margin-top: rem(10px);
+    }
+
+    .bc-banner__button {
+
+        a {
+
+            & + a {
+                margin-left: rem(10px);
+
+                @include mq('sm') {
+                    margin-left: 0px;
+                    margin-top: rem(10px);
+                }
+            }
+        }
+    }
+
+    //** alignment css **//
+    &.-align-left,
+    &.-align-right {
+        display: block;      
+        padding: 0px;  
+        
+        .bc-banner__content {            
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-gap: 0px rem(30px);            
+        }
+
+        .bc-banner__content-container {
+            grid-column: span 7;
+            padding: rem(60px) 0px;
+
+            @include mq('sm') {
+                padding: rem(40px) 0px;
+            }
+        }
+
+        .bc-banner__title,
+        .bc-banner__date,
+        .bc-banner__location,
+        .bc-banner__ticket-start,
+        .bc-banner__button {
+            text-align: left;            
+        }
+
+        .bc-banner__date,
+        .bc-banner__location,
+        .bc-banner__ticket-start {
+            p,
+            a {
+                justify-content: flex-start;
+            }
+        }
+       
+        .bc-banner__aligned-content {
+            grid-column: span 5;
+            padding: rem(60px) 0px;
+
+            @include mq('sm') {
+                padding: rem(40px) 0px;
+            }
+        }
+    }
+
+    //** Right alignment styles **//
+    &.-align-right {
+        direction: rtl;
+
+        .bc-banner__aligned-content,
+        .bc-banner__content-container {
+            direction: ltr;
+        }
+
+        .bc-banner__content-container {
+            grid-column: span 5;
+        }
+
+        .bc-banner__aligned-content {
+            grid-column: span 7;
+        }        
+    }
+}
+
+//** Event Body **//
+.bc-plugin-single-event {
+
+    &__top {
+        margin-bottom: rem(20px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @include mq('sm') {
+            display: block;
+        }
+        
+        .custom-button-one {
+            min-width: rem(200px);            
+
+            a {
+                display: block;
+            }
+
+            @include mq('sm') {
+                width: 100%;   
+                margin-top: rem(10px);                
+            }
+        }
+    }
+
+    &__right {
+        @include mq('sm') {
+            margin-top: rem(20px);
+        }
+    }
+
+    &__tickets {
+        margin-bottom: rem(20px);
+        padding-bottom: rem(20px);
+        border-bottom: 1px solid lighten($gray, 15%);        
+
+        .single-ticket {
+            padding: rem(20px);
+            background-color: lighten($gray, 15%);
+            border-radius: rem(4px);
+            margin-top: rem(20px);
+
+            .name-price {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                > * {
+                    margin: 0px;
+                    font-weight: 700;
+                    font-size: rem(18px);
+                }
+            }            
+        }
+
+        .ticket-desc {
+            margin: rem(15px) 0px;
+
+            p {
+                margin: 0px;
+            }
+        }
+
+        .ticket-button {
+            a {
+                display: block;
+            }
+        }
+    }
+
+    &__event-details {
+
+        h4.section-title {
+            margin: 0px;
+        }
+
+        .single-detail {
+            margin-top: rem(20px);
+
+            p {
+                display: flex;
+                align-items: flex-start;
+                font-size: rem(18px);
+
+                i {
+                    position: relative;
+                    top: rem(3px);
+                    margin-right: rem(10px);
+                }
+            }
+
+            &.-location {
+                span {
+
+                    a {
+                        margin-top: rem(10px);
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+
+        .event-share {
+            margin-top: rem(20px);
+
+            a {
+                font-size: rem(24px);
+
+                & + a {
+                    margin-left: rem(10px);
+                }
+            }
+        }
+
+        .custom-button-two {
+            margin-top: rem(20px);
+
+            a {
+                display: block;
+            }
+        }
+    }
+
+    &__schedule {
+        padding-top: rem(60px);
+
+        @include mq('sm') {
+            padding-top: rem(40px);
+        }
+                
+        .schedule-title {
+            text-align: center;
+            margin-bottom: rem(40px);
+            max-width: 75%;
+            margin-left: auto;
+            margin-right: auto;
+
+            @include mq('sm') {
+                max-width: 100%;
+            }
+
+            h2 {
+                margin: 0px;
+            }
+
+            p {
+                margin-bottom: 0px;
+                margin-top: rem(15px);
+            }
+        }
+
+        .single-event-tabs {
+            border: none;
+            padding: rem(10px);
+            padding-bottom: 0px;
+            background-color: lighten($gray, 15%);
+            border-radius: rem(4px);
+
+            .single-tab {
+                border: none;
+                text-align: center;
+                @include fluid-type(16px, 20px);
+                font-weight: 700;
+                color: $black;
+
+                &.active {
+                    background-color: transparent;
+                    border-bottom: 2px solid $color1;
+                    color: $color1;
+                }
+            }
+        }
+
+        .single-event {
+            display: flex;
+            align-items: center;
+            margin-top: rem(20px);
+            padding: rem(20px);
+            border-radius: rem(4px);
+            border: 1px solid lighten($gray, 15%);
+
+            > * {
+                flex: 1;
+            }
+
+            @include mq('sm') {
+                display: block;
+                padding: 0px;
+            }
+
+            .single-event-image {
+                width: rem(185px);
+                height: rem(185px);
+                flex: 0 0 rem(185px);
+                position: relative;
+                overflow: hidden;
+                //border-radius: 50%;
+                margin-right: rem(20px);
+
+                @include mq('sm') {
+                    width: 100%;
+                    height: rem(100px);
+                    margin-right: 0px;    
+                    border-radius: 0px;    
+                    border-top-left-radius: rem(4px);            
+                    border-top-right-radius: rem(4px);
+                }
+
+                img {
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .single-event-content {
+
+                @include mq('sm') {
+                    padding: rem(20px);
+                }
+
+                .single-event-meta {
+                    margin-bottom: rem(10px);
+
+                    &.-title {
+                        font-weight: 700;
+                        font-size: rem(20px);
+                    }
+                }
+            }
+        }
+    }
+
+    &__gallery {
+        padding: rem(60px) 0px 0px;
+        overflow: hidden;
+
+        @include mq('sm') {
+            padding: rem(40px) 0px 0px;
+
+            .slick-list {
+                overflow: visible;
+            }
+        }
+
+        .gallery-title {
+            text-align: center;
+            margin-bottom: rem(40px);
+            max-width: 75%;
+            margin-left: auto;
+            margin-right: auto;
+
+            @include mq('sm') {
+                max-width: 100%;
+            }
+
+            h2 {
+                margin: 0px;
+            }
+
+            p {
+                margin-bottom: 0px;
+                margin-top: rem(15px);
+            }
+        }
+
+        .gallery-arrows {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            .arrows {
+                cursor: pointer;
+                margin-top: rem(20px);
+                font-size: rem(24px);
+                color: $color1;
+
+                & + .arrows {
+                    margin-left: rem(20px);
+                }
+            }
+        }
+    }
+}
