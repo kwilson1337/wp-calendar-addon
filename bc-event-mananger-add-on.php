@@ -1,11 +1,10 @@
 <?php
 /**
- * Plugin Name:       BC Events Manager Add On
- * Plugin URI:        http://brandcoders.com/
+ * Plugin Name:       Events Manager Add On
+ * Plugin URI:        https://github.com/kwilson1337
  * Description:       Seamlessly displays your custom events, the way you want them to display.
  * Version:           1.0
- * Author:            BrandCoders
- * Text Domain:       bc-events
+ * Author:            Kyle Wilson 
  */
 
 defined('ABSPATH') or die('Naaaah');
